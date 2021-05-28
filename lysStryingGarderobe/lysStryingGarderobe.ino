@@ -6,7 +6,7 @@ enum states
 };
 uint8_t currentState = S_IDLE;
 uint8_t lastState = S_OFF;
-// uint8_t LED = 4; //used for testing.
+uint8_t LED = 4; //used for testing.
 boolean timedOut = false;
 unsigned long nextTimeout = 0; //Time for next timeout, in milliseconds
 unsigned long turnOffTime = 300000; //turn off the light if it is on for more then 5 min
@@ -52,18 +52,18 @@ void controller() {
   int valueRight = analogRead(A0);
   int valueLeft = analogRead(A1);
 
-  //    Serial.print("Høyre: ");
-  //    Serial.print(valueRight);
-  //    Serial.print("          Venstre: ");
-  //    Serial.println(valueLeft);
+//      Serial.print("Høyre: ");
+//      Serial.print(valueRight);
+//      Serial.print("          Venstre: ");
+//      Serial.println(valueLeft);
 
-  if ((valueRight < 300 || valueLeft < 300) && lastState != S_ON) {
+  if ((valueRight < 350 || valueLeft < 300) && lastState != S_ON) {
     changeStateTo(S_ON);
     lastState = S_ON;
     timedOut = false;
   }
 
-  else if (valueRight > 400 && valueLeft > 400 && lastState != S_OFF) {
+  else if (valueRight > 350 && valueLeft > 400 && lastState != S_OFF) {
     changeStateTo(S_OFF);
     lastState = S_OFF;
   }
@@ -101,6 +101,12 @@ void startTimer(unsigned long duration)
   nextTimeout = millis() + duration;
 }
 
+void changeStateTo(uint8_t newState)
+{
+  currentState = newState;
+}
+
+//Testing fuctions
 void turnLedOn()
 {
   digitalWrite(LED, HIGH);
@@ -109,9 +115,4 @@ void turnLedOn()
 void turnLedOff()
 {
   digitalWrite(LED, LOW);
-}
-
-void changeStateTo(uint8_t newState)
-{
-  currentState = newState;
 }
