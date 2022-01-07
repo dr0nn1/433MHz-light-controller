@@ -48,9 +48,17 @@ void loop() {
 }
 
 void controller() {
-  delay(100);
+  //delay(100);
   int valueRight = analogRead(A0);
   int valueLeft = analogRead(A1);
+
+  for (int i=0;i<9;i++){
+    delay(10);
+    valueRight += analogRead(A0);
+    valueLeft += analogRead(A1);
+  }
+  valueRight = int(valueRight / 10);
+  valueLeft = int(valueLeft / 10);
 
 //      Serial.print("Høyre: ");
 //      Serial.print(valueRight);
