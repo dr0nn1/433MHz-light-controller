@@ -17,3 +17,6 @@ Used the sender for toogle the light.
 ## Help stuff:  
 [Help for Decode and Send 433 MHz](https://randomnerdtutorials.com/decode-and-send-433-mhz-rf-signals-with-arduino/)  
 [The 433 receiver in the wardrobe](https://www.halemeier.de/fileadmin/templates/Product/Data/1994801_MA_TriMitter.pdf)
+
+## Schematic:
+![Schematic](schematic.png)

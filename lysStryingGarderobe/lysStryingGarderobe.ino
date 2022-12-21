@@ -3,7 +3,7 @@ enum states
   S_IDLE,
   S_ON,
   S_OFF,
-};
+};  
 uint8_t currentState = S_IDLE;
 uint8_t lastState = S_OFF;
 uint8_t LED = 4; //used for testing.
