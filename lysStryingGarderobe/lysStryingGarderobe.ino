@@ -26,7 +26,6 @@ void setup() {
 }
 
 void loop() {
-
   switch (currentState) {
     case S_IDLE:
       controller();
@@ -60,18 +59,18 @@ void controller() {
   valueRight = int(valueRight / 10);
   valueLeft = int(valueLeft / 10);
 
-//      Serial.print("Høyre: ");
-//      Serial.print(valueRight);
-//      Serial.print("          Venstre: ");
-//      Serial.println(valueLeft);
+    //  Serial.print("Høyre: ");
+    //  Serial.print(valueRight);
+    //  Serial.print("          Venstre: ");
+    //  Serial.println(valueLeft);
 
-  if ((valueRight < 350 || valueLeft < 300) && lastState != S_ON) {
+  if ((valueRight < 400 || valueLeft < 300) && lastState != S_ON) {
     changeStateTo(S_ON);
     lastState = S_ON;
     timedOut = false;
   }
 
-  else if (valueRight > 350 && valueLeft > 400 && lastState != S_OFF) {
+  else if (valueRight > 400 && valueLeft > 400 && lastState != S_OFF) {
     changeStateTo(S_OFF);
     lastState = S_OFF;
   }
@@ -82,12 +81,14 @@ void controller() {
 
 }
 
-void lightOn() {
-  mySwitch.send("00011111000011010000000101010000");
+void lightOn() {                
+  //mySwitch.send("00011111000011010000000101010000");
+  mySwitch.send("00111010110011110000000101010000");
 }
 
 void lightOff() {
-  mySwitch.send("00011111000011010000000101010001");
+  //mySwitch.send("00011111000011010000000101010001");
+  mySwitch.send("00111010110011110000000101010001");
 }
 
 boolean timerHasExpired()

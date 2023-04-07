@@ -1,0 +1,9 @@
+Venstre side sett mot skapet:
+Hvit på brett til gul på sensor, lese av verdi
+Svart på sensor til - på brett
+Rød på sensor til + på brettet
+
+Høyre side:
+Brun på brett til gul på sensor, lese av verdi
+Svart på sensor til - på brett
+Rød på sensor til + på brettet
